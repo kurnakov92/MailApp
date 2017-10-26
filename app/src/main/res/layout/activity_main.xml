@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.testtask.oleg.mailapp.MainActivity">
 
 
@@ -57,8 +58,9 @@
         android:layout_width="266dp"
         android:layout_height="65dp"
         android:text="@string/btn_view"
-        tools:layout_editor_absoluteX="59dp"
-        tools:layout_editor_absoluteY="404dp" />
+        tools:layout_editor_absoluteY="404dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
 
 </android.support.constraint.ConstraintLayout>
