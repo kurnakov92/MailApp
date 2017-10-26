@@ -29,8 +29,8 @@
         android:id="@+id/input_photo"
         android:layout_width="159dp"
         android:layout_height="159dp"
-        android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginBottom="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -42,11 +42,12 @@
     <EditText
         android:id="@+id/input_email"
         android:layout_width="340dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="8dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="15dp"
         android:ems="10"
         android:inputType="textEmailAddress"
-        android:textAlignment="center"
+        android:hint="@string/hint_email"
+        android:textAlignment="gravity"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/input_photo"
@@ -55,38 +56,70 @@
     <EditText
         android:id="@+id/input_phone"
         android:layout_width="340dp"
-        android:layout_height="45dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="15dp"
         android:elevation="0dp"
         android:ems="10"
         android:inputType="phone"
-        android:textAlignment="center"
+        android:hint="@string/hint_phone"
+        android:textAlignment="gravity"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/input_email"
         tools:layout_constraintTop_creator="3" />
 
+    <TextView
+        android:id="@+id/phone_number_counter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0/12"
+        android:textAlignment="center"
+        app:layout_constraintTop_toBottomOf="@id/input_phone"
+        app:layout_constraintEnd_toEndOf="@id/input_phone"
+
+
+         />
+
     <EditText
         android:id="@+id/input_password"
         android:layout_width="340dp"
-        android:layout_height="45dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="15dp"
         android:elevation="0dp"
         android:ems="10"
         android:inputType="textPassword"
-        android:textAlignment="center"
+        android:hint="@string/hint_password"
+        android:textAlignment="gravity"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/input_phone"
         tools:layout_constraintTop_creator="3" />
 
+    <ToggleButton
+        android:id="@+id/btn_change_pass_visibility"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_toggle"
+        android:layout_marginRight="12dp"
+        android:textOn=""
+        android:textOff=""
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/input_password"
+        />
+
     <Button
         android:id="@+id/btn_view"
         android:layout_width="340dp"
-        android:layout_height="45dp"
-        android:text="Button"
+        android:layout_height="60dp"
+        android:layout_marginTop="31dp"
+        android:text="@string/btn_view"
+        android:background="@drawable/btn_background"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/input_password"
         tools:layout_constraintTop_creator="3" />
+
+
 
 
 </android.support.constraint.ConstraintLayout>

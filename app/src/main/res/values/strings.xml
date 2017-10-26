@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">MailApp</string>
     <string name="btn_view">VIEW</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_phone">Phone</string>
+    <string name="hint_password">Password</string>
 
 </resources>
