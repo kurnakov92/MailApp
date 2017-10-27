@@ -4,6 +4,103 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.testtask.oleg.mailapp.SendDataActivity">
+    android:orientation="vertical"
+    tools:context="com.testtask.oleg.mailapp.SendDataActivity"
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="81dp">
 
+    <ImageView
+        android:id="@+id/send_photo"
+        android:layout_width="159dp"
+        android:layout_height="159dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="8dp"
+        android:focusable="false"
+        android:clickable="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1" />
+
+    <TextView
+        android:id="@+id/send_email"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:textAlignment="gravity"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/send_photo"
+        tools:layout_editor_absoluteX="38dp"
+        tools:layout_editor_absoluteY="191dp"
+        android:layout_marginTop="15dp"
+        tools:layout_constraintTop_creator="3"
+        android:focusable="false"
+        android:clickable="false"
+        android:editable="false"
+        />
+
+    <TextView
+        android:id="@+id/send_phone"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:ems="10"
+        android:inputType="phone"
+        android:textAlignment="gravity"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/send_email"
+        tools:layout_editor_absoluteX="38dp"
+        tools:layout_editor_absoluteY="191dp"
+        android:layout_marginTop="15dp"
+        tools:layout_constraintTop_creator="3"
+        android:focusable="false"
+        android:clickable="false"
+        android:editable="false"
+        />
+
+    <TextView
+        android:id="@+id/send_pass"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/send_phone"
+        tools:layout_editor_absoluteX="38dp"
+        tools:layout_editor_absoluteY="191dp"
+        android:layout_marginTop="15dp"
+        tools:layout_constraintTop_creator="3"
+        android:focusable="false"
+        android:clickable="false"
+        android:editable="false"
+        />
+
+    <Button
+        android:id="@+id/btn_sendToEmail"
+        android:layout_width="340dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="31dp"
+        android:text="@string/send_by_email"
+        android:background="@drawable/btn_background"
+        android:textColor="@color/white"
+        android:onClick="sendEmail"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/send_pass"
+        />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_email_black_18dp"
+        app:srcCompat="@android:drawable/sym_action_email"
+        tools:layout_editor_absoluteX="-12dp"
+        tools:layout_editor_absoluteY="200dp" />
 </android.support.constraint.ConstraintLayout>
