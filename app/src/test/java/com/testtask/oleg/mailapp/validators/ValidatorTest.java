@@ -1,5 +1,6 @@
 package com.testtask.oleg.mailapp.validators;
 
+import org.hamcrest.core.StringContains;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -11,25 +12,53 @@ public class ValidatorTest {
 
     Validator validator = new Validator();
 
+    private String value;
+
+    @Test
+    public void isPasswordValid() throws Exception {
+        //Проверка на кол-во символов
+        value = "ad1d";
+        assertFalse(validator.isPasswordValid(value));
+
+        //проверка на наличие цифр
+        value = "adadass";
+        assertFalse(validator.isPasswordValid(value));
+
+        //проверка на наличие букв
+        value = "123123123";
+        assertFalse(validator.isPasswordValid(value));
+
+        value = "a1sd2qwe";
+        assertTrue(validator.isPasswordValid(value));
+    }
+
+
     @Test
     public void isPhoneValid() throws Exception {
-//        String value1 = "89133841262";
-//        assertTrue(validator.isPhoneValid(value1));
+
+        value = "+79133841262";
+        assertTrue(validator.isPhoneValid(value));
+
+        value = "89133841262";
+        assertTrue(validator.isPhoneValid(value));
+
+        value ="923";
+        assertFalse(validator.isPhoneValid(value));
     }
 
     @Test
     public void isEmailValid() throws Exception {
-        String value1 = "qweqweqwe";
-        assertFalse(validator.isEmailValid(value1));
+        value = "qweqweqwe";
+        assertFalse(validator.isEmailValid(value));
 
-       String value2 = "android@gmail.com";
-        assertTrue(validator.isEmailValid(value2));
+        value = "android@gmail.com";
+        assertTrue(validator.isEmailValid(value));
 
-        String value3 = "mymail@com";
-        assertFalse(validator.isEmailValid(value3));
+        value = "mymail@com";
+        assertFalse(validator.isEmailValid(value));
 
-        String value4 = "mymail.com";
-        assertFalse(validator.isEmailValid(value4));
+        value = "mymail.com";
+        assertFalse(validator.isEmailValid(value));
     }
 
 }

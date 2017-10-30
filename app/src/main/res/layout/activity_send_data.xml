@@ -9,22 +9,6 @@
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="81dp">
 
-    <ImageView
-        android:id="@+id/send_photo"
-        android:layout_width="159dp"
-        android:layout_height="159dp"
-        android:layout_marginBottom="15dp"
-        android:layout_marginTop="8dp"
-        android:focusable="false"
-        android:clickable="false"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintRight_creator="1" />
-
     <TextView
         android:id="@+id/send_email"
         android:layout_width="300dp"
@@ -34,7 +18,7 @@
         android:textAlignment="gravity"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/send_photo"
+        app:layout_constraintTop_toBottomOf="parent"
         tools:layout_editor_absoluteX="38dp"
         tools:layout_editor_absoluteY="191dp"
         android:layout_marginTop="15dp"

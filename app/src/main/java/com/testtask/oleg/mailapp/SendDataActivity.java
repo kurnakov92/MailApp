@@ -1,6 +1,8 @@
 package com.testtask.oleg.mailapp;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,7 +14,6 @@ import android.widget.TextView;
 
 public class SendDataActivity extends AppCompatActivity {
 
-    private ImageView photo;
     private TextView et_email;
     private TextView et_phone;
     private TextView et_password;
@@ -21,8 +22,6 @@ public class SendDataActivity extends AppCompatActivity {
     private String mail;
     private String phone;
     private String password;
-
-    private static final String TAG = "myLogs";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +34,6 @@ public class SendDataActivity extends AppCompatActivity {
 
     private void findViews(){
 
-        photo = (ImageView) findViewById(R.id.send_photo);
         et_email = (TextView) findViewById(R.id.send_email);
         et_phone = (TextView) findViewById(R.id.send_phone);
         et_password = (TextView) findViewById(R.id.send_pass);
@@ -44,9 +42,9 @@ public class SendDataActivity extends AppCompatActivity {
     }
 
     private void setDataToViews(){
+
         Intent intent = getIntent();
         mail = intent.getStringExtra(MainActivity.EMAIL);
-        Log.d(TAG,mail);
         phone = intent.getStringExtra(MainActivity.PHONE_NUMBER);
         password = intent.getStringExtra(MainActivity.PASSWORD);
 
