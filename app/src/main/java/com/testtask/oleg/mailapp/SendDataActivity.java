@@ -17,7 +17,6 @@ public class SendDataActivity extends AppCompatActivity {
     private TextView et_email;
     private TextView et_phone;
     private TextView et_password;
-    private Button btn_send;
 
     private String mail;
     private String phone;
@@ -37,7 +36,6 @@ public class SendDataActivity extends AppCompatActivity {
         et_email = (TextView) findViewById(R.id.send_email);
         et_phone = (TextView) findViewById(R.id.send_phone);
         et_password = (TextView) findViewById(R.id.send_pass);
-        btn_send = (Button) findViewById(R.id.btn_sendToEmail);
 
     }
 
@@ -62,7 +60,7 @@ public class SendDataActivity extends AppCompatActivity {
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.putExtra(Intent.EXTRA_EMAIL, new String[]{""});
         intent.putExtra(Intent.EXTRA_SUBJECT, "Mail App: данные анкеты");
-        intent.putExtra(Intent.EXTRA_TEXT, "Email: " + mail+"\n\rPhone: " + phone + "\n\r");
+        intent.putExtra(Intent.EXTRA_TEXT, "Email: " + mail+"\n\rPhone:" + phone + "\n\r");
         intent.setType("message/rfc822");
         startActivity(Intent.createChooser(intent, "Выберите email клиент :"));
     }
