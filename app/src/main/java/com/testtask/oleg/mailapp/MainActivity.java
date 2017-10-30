@@ -7,7 +7,6 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -15,8 +14,6 @@ import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.testtask.oleg.mailapp.validators.Validator;
-
-import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -60,6 +57,10 @@ public class MainActivity extends AppCompatActivity {
         String phone = etPhone.getText().toString();
         String pass = etPassword.getText().toString();
         validateFields(email, phone, pass);
+        /**
+         * TODO удалить строку снизу
+         */
+        result= true;
         if (result) {
             intent.putExtra(MainActivity.EMAIL, email);
             intent.putExtra(MainActivity.PHONE_NUMBER, phone);
