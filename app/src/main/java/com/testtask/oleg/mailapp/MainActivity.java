@@ -46,26 +46,12 @@ public class MainActivity extends AppCompatActivity {
         intent = new Intent(this, SendDataActivity.class);
     }
 
-    public void changePasswordVisibility(View view) {
-
-        btnChangePassVisibility = (ToggleButton) findViewById(R.id.btn_change_pass_visibility);
-        if (btnChangePassVisibility.isChecked()) {
-            etPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
-        } else {
-            etPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-        }
-    }
-
     public void openSendDataActivity(View view) {
 
         String email = etEmail.getText().toString();
         String phone = etPhone.getText().toString();
         String pass = etPassword.getText().toString();
         validateFields(email, phone, pass);
-        /**
-         * TODO удалить строку снизу
-         */
-        result= true;
         if (result) {
             intent.putExtra(MainActivity.EMAIL, email);
             intent.putExtra(MainActivity.PHONE_NUMBER, phone);
@@ -107,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private String toNumericOnlyFormat(String pNumber){
+    private String toNumericOnlyFormat(String pNumber) {
 
         pNumber = pNumber.replaceAll(" ", "");
         pNumber = pNumber.replaceAll("\\+", "");
@@ -135,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
             mailValid = true;
         }
 
-        if (!validator.isPhoneValid(phone)) {
+        if (!validator.isPhoneValid(toNumericOnlyFormat(phone))) {
             toast = Toast.makeText(this, "Введите правильный номер телефона", Toast.LENGTH_SHORT);
             toast.show();
             result = false;
@@ -159,6 +145,16 @@ public class MainActivity extends AppCompatActivity {
             result = true;
         }
 
+    }
+
+    public void changePasswordVisibility(View view) {
+
+        btnChangePassVisibility = (ToggleButton) findViewById(R.id.btn_change_pass_visibility);
+        if (btnChangePassVisibility.isChecked()) {
+            etPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+        } else {
+            etPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+        }
     }
 
 }
