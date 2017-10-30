@@ -32,7 +32,7 @@
         android:layout_marginTop="15dp"
         android:elevation="0dp"
         android:ems="10"
-        android:maxLength="12"
+        android:maxLength="18"
         android:inputType="phone"
         android:hint="@string/hint_phone"
         android:textAlignment="gravity"

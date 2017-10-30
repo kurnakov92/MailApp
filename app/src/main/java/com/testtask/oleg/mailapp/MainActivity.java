@@ -15,6 +15,11 @@ import android.widget.ToggleButton;
 
 import com.testtask.oleg.mailapp.validators.Validator;
 
+import ru.tinkoff.decoro.MaskImpl;
+import ru.tinkoff.decoro.slots.PredefinedSlots;
+import ru.tinkoff.decoro.watchers.FormatWatcher;
+import ru.tinkoff.decoro.watchers.MaskFormatWatcher;
+
 public class MainActivity extends AppCompatActivity {
 
     private ToggleButton btnChangePassVisibility;
@@ -71,13 +76,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void findViews() {
+        FormatWatcher formatWatcher = new MaskFormatWatcher(MaskImpl.createNonTerminated(PredefinedSlots.RUS_PHONE_NUMBER));
+
         etEmail = (EditText) findViewById(R.id.input_email);
         etPhone = (EditText) findViewById(R.id.input_phone);
+        formatWatcher.installOn(etPhone);
         etPassword = (EditText) findViewById(R.id.input_password);
         tvCounter = (TextView) findViewById(R.id.phone_number_counter);
     }
 
     private class CounterTextWatcher implements TextWatcher {
+
 
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -86,13 +95,27 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
-            tvCounter.setText(String.valueOf(s).length() + "/12");
+            String value = String.valueOf(s) + "";
+            value = toNumericOnlyFormat(value);
+            // +1 нужен для того чтобы "+" тоже считался как введенный символ
+            tvCounter.setText(value.length() + 1 + "/12");
         }
 
         @Override
         public void afterTextChanged(Editable s) {
 
         }
+    }
+
+    private String toNumericOnlyFormat(String pNumber){
+
+        pNumber = pNumber.replaceAll(" ", "");
+        pNumber = pNumber.replaceAll("\\+", "");
+        pNumber = pNumber.replaceAll("\\(", "");
+        pNumber = pNumber.replaceAll("\\)", "");
+        pNumber = pNumber.replaceAll("\\-", "");
+
+        return pNumber;
     }
 
     private void validateFields(String email, String phone, String pass) {

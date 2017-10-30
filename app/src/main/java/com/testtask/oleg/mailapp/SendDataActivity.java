@@ -12,6 +12,11 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import ru.tinkoff.decoro.MaskImpl;
+import ru.tinkoff.decoro.slots.PredefinedSlots;
+import ru.tinkoff.decoro.watchers.FormatWatcher;
+import ru.tinkoff.decoro.watchers.MaskFormatWatcher;
+
 public class SendDataActivity extends AppCompatActivity {
 
     private TextView et_email;
@@ -47,6 +52,10 @@ public class SendDataActivity extends AppCompatActivity {
         mail = intent.getStringExtra(MainActivity.EMAIL);
         phone = intent.getStringExtra(MainActivity.PHONE_NUMBER);
         password = intent.getStringExtra(MainActivity.PASSWORD);
+
+        FormatWatcher formatWatcher = new MaskFormatWatcher(MaskImpl.createNonTerminated(PredefinedSlots.RUS_PHONE_NUMBER));
+        formatWatcher.installOn(et_phone);
+
 
         et_email.setText(mail);
         et_phone.setText(phone);
