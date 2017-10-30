@@ -1,35 +1,36 @@
 package com.testtask.oleg.mailapp;
 
 import android.content.Intent;
-import android.media.MediaRecorder;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
-import android.view.SurfaceView;
+import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
-import android.hardware.Camera;
 
 import com.testtask.oleg.mailapp.validators.Validator;
 
+import org.w3c.dom.Text;
+
 public class MainActivity extends AppCompatActivity {
 
-
     private ToggleButton btnChangePassVisibility;
-    private EditText inputEmail;
-    private EditText inputPhone;
-    private EditText inputPassword;
+    private EditText etEmail;
+    private EditText etPhone;
+    private EditText etPassword;
+    private TextView tvCounter;
     private Intent intent;
 
     //Ключи для обмена данными между Activities
     public static final String PHONE_NUMBER = "PHONE_NUMBER";
     public static final String EMAIL = "EMAIL";
     public static final String PASSWORD = "PASSWORD";
-    public static final String PHOTO = "PHOTO";
 
     private boolean result = false;
 
@@ -38,24 +39,62 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         findViews();
+
+        etPhone.addTextChangedListener(new CounterTextWatcher());
         intent = new Intent(this, SendDataActivity.class);
-
-        //Валидация телефона
-//        inputPhone.addTextChangedListener(new PhoneNumberFormattingTextWatcher());
     }
-
 
     public void changePasswordVisibility(View view) {
 
         btnChangePassVisibility = (ToggleButton) findViewById(R.id.btn_change_pass_visibility);
         if (btnChangePassVisibility.isChecked()) {
-            inputPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+            etPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
         } else {
-            inputPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+            etPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
         }
     }
 
-    private void validateFields(String email, String phone, String pass){
+    public void openSendDataActivity(View view) {
+
+        String email = etEmail.getText().toString();
+        String phone = etPhone.getText().toString();
+        String pass = etPassword.getText().toString();
+        validateFields(email, phone, pass);
+        if (result) {
+            intent.putExtra(MainActivity.EMAIL, email);
+            intent.putExtra(MainActivity.PHONE_NUMBER, phone);
+            intent.putExtra(MainActivity.PASSWORD, pass);
+            startActivity(intent);
+        }
+
+    }
+
+    private void findViews() {
+        etEmail = (EditText) findViewById(R.id.input_email);
+        etPhone = (EditText) findViewById(R.id.input_phone);
+        etPassword = (EditText) findViewById(R.id.input_password);
+        tvCounter = (TextView) findViewById(R.id.phone_number_counter);
+    }
+
+    private class CounterTextWatcher implements TextWatcher {
+
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            tvCounter.setText(String.valueOf(s).length() + "/12");
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+
+        }
+    }
+
+    private void validateFields(String email, String phone, String pass) {
         Validator validator = new Validator();
         Toast toast;
 
@@ -97,27 +136,5 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
-    
-    public void openSendDataActivity(View view) {
-
-        String email = inputEmail.getText().toString();
-        String phone = inputPhone.getText().toString();
-        String pass = inputPassword.getText().toString();
-        validateFields(email, phone, pass);
-        if (result){
-            intent.putExtra(MainActivity.EMAIL, email);
-            intent.putExtra(MainActivity.PHONE_NUMBER, phone);
-            intent.putExtra(MainActivity.PASSWORD, pass);
-            startActivity(intent);
-        }
-
-    }
-
-    private void findViews() {
-        inputEmail = (EditText) findViewById(R.id.input_email);
-        inputPhone = (EditText) findViewById(R.id.input_phone);
-        inputPassword = (EditText) findViewById(R.id.input_password);
-    }
-
 
 }
